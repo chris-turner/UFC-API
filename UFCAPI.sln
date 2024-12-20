@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFCAPI", "UFCAPI.csproj", "{7FBABAF8-68C2-4E5D-85BC-5F64D7133884}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFCAPI", "UFCAPI\UFCAPI.csproj", "{CE7E8772-F49A-4446-9305-CAA82A791902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFCDataImport", "UFCDataImport\UFCDataImport.csproj", "{C0CC35E8-02FD-4F2E-BD91-6EAB5841AF91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7FBABAF8-68C2-4E5D-85BC-5F64D7133884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FBABAF8-68C2-4E5D-85BC-5F64D7133884}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FBABAF8-68C2-4E5D-85BC-5F64D7133884}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FBABAF8-68C2-4E5D-85BC-5F64D7133884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7E8772-F49A-4446-9305-CAA82A791902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7E8772-F49A-4446-9305-CAA82A791902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7E8772-F49A-4446-9305-CAA82A791902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7E8772-F49A-4446-9305-CAA82A791902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0CC35E8-02FD-4F2E-BD91-6EAB5841AF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CC35E8-02FD-4F2E-BD91-6EAB5841AF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CC35E8-02FD-4F2E-BD91-6EAB5841AF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CC35E8-02FD-4F2E-BD91-6EAB5841AF91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
