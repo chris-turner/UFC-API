@@ -88,37 +88,41 @@ public class UFCDataDB
     new FightCard{ fightCardID = 2, fightCardName = "Test 2", date = "2024-12-31", location = "Los Angeles, CA" },
     new FightCard{ fightCardID = 3, fightCardName = "Test 3", date = "2025-01-05", location = "Chicago, IL" }
 };
+
+    private static List<Fight> _fightsInFightCard = new List<Fight>();
+
+
+    private static List<Fight> _fights = new List<Fight>();
+
+    private static List<FightStats> _fightStats = new List<FightStats>();
+
     public static List<FightCard> GetFightCards()
     {
         return _fightcards;
     }
 
-    public static FightCard? GetFightCard(int id)
+    public static FightCard? GetFightCard(int fightCardID)
     {
-        return _fightcards.SingleOrDefault(FightCard => FightCard.fightCardID == id);
+        return _fightcards.SingleOrDefault(FightCard => FightCard.fightCardID == fightCardID);
     }
 
-    //public static FightCard CreateFightCard(FightCard FightCard)
-    //{
-    //    _fightcards.Add(FightCard);
-    //    return FightCard;
-    //}
+    public static List<Fight> GetFightsOnFightCard(int fightCardID)
+    {
+        return _fightsInFightCard;
+    }
 
-    //public static FightCard UpdateFightCard(FightCard update)
-    //{
-    //    _FightCards = _FightCards.Select(FightCard =>
-    //    {
-    //        if (FightCard.Id == update.Id)
-    //        {
-    //            FightCard.Name = update.Name;
-    //        }
-    //        return FightCard;
-    //    }).ToList();
-    //    return update;
-    //}
+    public static List<Fight> GetFights()
+    {
+        return _fights;
+    }
 
-    //public static void RemoveFightCard(int id)
-    //{
-    //    _FightCards = _FightCards.FindAll(FightCard => FightCard.Id != id).ToList();
-    //}
+    public static Fight? GetFight(int fightID)
+    {
+        return _fights.SingleOrDefault(Fight=> Fight.fightID == fightID);
+    }
+
+    public static List<FightStats> GetFightStats(int fightID)
+    {
+        return _fightStats;
+    }
 }
