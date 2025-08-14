@@ -29,5 +29,6 @@ app.MapGet("/fightcards/fights/{id}", (int id) => UFCDataDB.GetFightsOnFightCard
 app.MapGet("/fights", () => UFCDataDB.GetFights());
 app.MapGet("/fights/{id}", (int id) => UFCDataDB.GetFight(id));
 app.MapGet("/fightstats/{id}", (int id) => UFCDataDB.GetFightStats(id));
+app.MapGet("/sigstrikes/{id}", (int id) => UFCDataDB.GetSigStrikes(id));
 
 app.Run();

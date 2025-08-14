@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace UFCData.DB;
 
 public class Fighter
@@ -26,7 +28,7 @@ public class FightCard
 public class Fight
 {
     public int fightID { get; set; }
-    public FightCard fightCard { get; set; }
+    public int fightCardID { get; set; }
     public string fighter1 { get; set; }
     public string fighter2 { get; set; }
     public string fighter1Outcome { get; set; }
@@ -44,7 +46,7 @@ public class Fight
 
 public class FightStats
 {
-    public Fight fight { get; set; }
+    public int fightID { get; set; }
     public string fighterName { get; set; }
     public int round { get; set; }
     public int KD { get; set; }
@@ -62,7 +64,7 @@ public class FightStats
 }
 public class SignificantStrikes
 {
-    public Fight fight { get; set; }
+    public int fightID { get; set; }
     public string fighterName { get; set; }
     public int round { get; set; }
     public int headStrikesLanded { get; set; }
@@ -82,47 +84,101 @@ public class SignificantStrikes
 }
 public class UFCDataDB
 {
-    private static List<FightCard> _fightcards = new List<FightCard>()
-{
-    new FightCard{ fightCardID = 1, fightCardName = "Test 1", date = "2024-12-30", location = "New York, NY" },
-    new FightCard{ fightCardID = 2, fightCardName = "Test 2", date = "2024-12-31", location = "Los Angeles, CA" },
-    new FightCard{ fightCardID = 3, fightCardName = "Test 3", date = "2025-01-05", location = "Chicago, IL" }
-};
-
-    private static List<Fight> _fightsInFightCard = new List<Fight>();
-
-
-    private static List<Fight> _fights = new List<Fight>();
-
-    private static List<FightStats> _fightStats = new List<FightStats>();
-
     public static List<FightCard> GetFightCards()
     {
-        return _fightcards;
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\cards.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var fightCards = JsonSerializer.Deserialize<List<FightCard>>(json, options);
+        return fightCards ?? new List<FightCard>();
     }
 
     public static FightCard? GetFightCard(int fightCardID)
     {
-        return _fightcards.SingleOrDefault(FightCard => FightCard.fightCardID == fightCardID);
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\cards.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var fightCards = JsonSerializer.Deserialize<List<FightCard>>(json, options);
+        return fightCards.SingleOrDefault(fc => fc.fightCardID == fightCardID) ?? new FightCard();
     }
 
     public static List<Fight> GetFightsOnFightCard(int fightCardID)
     {
-        return _fightsInFightCard;
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\fights.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var fights = JsonSerializer.Deserialize<List<Fight>>(json, options);
+        return fights.Where(f => f.fightCardID == fightCardID).ToList() ?? new List<Fight>();
     }
 
     public static List<Fight> GetFights()
     {
-        return _fights;
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\fights.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var fights = JsonSerializer.Deserialize<List<Fight>>(json, options);
+        return fights ?? new List<Fight>();
     }
 
     public static Fight? GetFight(int fightID)
     {
-        return _fights.SingleOrDefault(Fight=> Fight.fightID == fightID);
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\fights.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var fights = JsonSerializer.Deserialize<List<Fight>>(json, options);
+        return fights.Where(f => f.fightID == fightID).FirstOrDefault() ?? new Fight();
     }
 
     public static List<FightStats> GetFightStats(int fightID)
     {
-        return _fightStats;
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\fightStats.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var fightStats = JsonSerializer.Deserialize<List<FightStats>>(json, options);
+        return fightStats.Where(f => f.fightID == fightID).ToList() ?? new List<FightStats>();
+    }
+
+    public static List<SignificantStrikes> GetSigStrikes(int fightID)
+    {
+        string jsonPath = @"C:\Users\Chris\Desktop\Code\UFCDB\significantStrikes.json";
+        string json = File.ReadAllText(jsonPath);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var sigStrikes = JsonSerializer.Deserialize<List<SignificantStrikes>>(json, options);
+        return sigStrikes.Where(f => f.fightID == fightID).ToList() ?? new List<SignificantStrikes>();
     }
 }
