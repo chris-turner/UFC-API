@@ -61,7 +61,6 @@ namespace UFCDataImport
         public int takedowns { get; set; }
         public int takedownAttempts { get; set; }
         public int subAtt { get; set; }
-        public int pass { get; set; }
         public int rev { get; set; }
         public string ctrl { get; set; }
 

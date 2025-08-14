@@ -3,7 +3,7 @@ using UFCDataImport;
 
 try
 {
-    await DataImport.getUFCStatsAsync();
+    await DataImport.GetUFCStatsAsync();
 }
 
 catch (Exception ex)
