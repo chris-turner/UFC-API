@@ -1,7 +1,7 @@
 # UFC API
  UFC Web scraper, database, and API
  
- Scrapes UFC/MMA statistics into an MSSQL database and makes them accessible via an API, returning the data in JSON.
+ Scrapes UFC/MMA statistics and makes them accessible via an API
 
 # API Methods
 
